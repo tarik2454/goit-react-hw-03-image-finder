@@ -1,10 +1,19 @@
 import React from 'react';
-import { StyledGalleryItem } from './ImageGalleryItem.styled';
+import { StyledGalleryItem, StyledImageItem } from './ImageGalleryItem.styled';
 
-export const ImageGalleryItem = () => {
+export const ImageGalleryItem = ({ images = [] }) => {
   return (
-    <StyledGalleryItem>
-      <ImageGalleryItem src="" alt=""></ImageGalleryItem>
-    </StyledGalleryItem>
+    <>
+      {images.map(({ id, webformatURL, type }, index) => (
+        <StyledGalleryItem key={index}>
+          <StyledImageItem
+            id={id}
+            src={webformatURL}
+            alt={type}
+            loading="lazy"
+          />
+        </StyledGalleryItem>
+      ))}
+    </>
   );
 };

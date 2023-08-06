@@ -1,14 +1,13 @@
 import { styled } from 'styled-components';
 
-export const StyledImageGallery = styled.div`
+export const StyledImageGallery = styled.ul`
   display: grid;
-  max-width: calc(100vw - 48px);
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 4fr));
+  /* grid-template-columns: ${props =>
+    !props.loading ? 'repeat(auto-fill, minmax(275px, 4fr))' : 'auto'}; */
   grid-gap: 16px;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 16px;
   padding: 0;
-  list-style: none;
-  margin-left: auto;
-  margin-right: auto;
 `;

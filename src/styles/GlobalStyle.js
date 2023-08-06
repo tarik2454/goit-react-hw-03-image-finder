@@ -30,11 +30,11 @@ export const StyledContainer = styled.div`
   max-width: 480px;
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    max-width: 768px;
   }
 
   @media screen and (min-width: 1200px) {
-    width: 1200px;
+    max-width: 1200px;
     padding: 0 24px;
   }
 `;

@@ -1,10 +1,6 @@
 import React from 'react';
 import { StyledImageGallery } from './ImageGallery.styled';
 
-export const ImageGallery = () => {
-  return (
-    <StyledImageGallery>
-      <li>Набор с изображениями</li>
-    </StyledImageGallery>
-  );
+export const ImageGallery = ({ children, loading }) => {
+  return <StyledImageGallery loading={loading}>{children}</StyledImageGallery>;
 };

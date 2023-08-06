@@ -11,11 +11,11 @@ export const fetchImages = async params => {
       image_type: 'photo',
       orientation: 'horizontal',
       safesearch: true,
-      per_page: 10,
+      per_page: 3,
       page: 1,
       ...params,
     },
   });
 
-  return console.log(data);
+  return data;
 };
