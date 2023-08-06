@@ -14,6 +14,11 @@ export const StyledOverlay = styled.div`
 `;
 
 export const StyledModalWindow = styled.div`
+  display: flex;
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
+
+  @media screen and (min-width: 768px) {
+    max-width: calc(100vw - 248px);
+  }
 `;

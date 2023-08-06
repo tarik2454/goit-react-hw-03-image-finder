@@ -2,16 +2,16 @@ import React from 'react';
 import { StyledGalleryItem, StyledImageItem } from './ImageGalleryItem.styled';
 
 export const ImageGalleryItem = ({ images = [], toggleModal }) => {
-  const handleImageClick = (webformatURL, alt) => {
+  const onImageClick = (webformatURL, alt) => {
     toggleModal(webformatURL, alt);
   };
 
   return (
     <>
-      {images.map(({ id, webformatURL, tags }) => (
+      {images.map(({ id, webformatURL, tags, largeImageURL }) => (
         <StyledGalleryItem
           key={id}
-          onClick={() => handleImageClick(webformatURL, tags)}
+          onClick={() => onImageClick(largeImageURL, tags)}
         >
           <StyledImageItem
             id={id}
