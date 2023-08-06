@@ -1,4 +1,4 @@
-import React, { Children, Component } from 'react';
+import React, { Component } from 'react';
 import { Button } from './Button/Button';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
@@ -21,8 +21,9 @@ export class App extends Component {
     total: null, // Общее количество найденных изображений
     error: '', // Сообщение об ошибке (если возникла)
     loading: false, // Флаг, показывающий, идет ли загрузка данных
-    buttonIsGone: false, // Флаг, показывающий, что кнопка не отображается (не используется в данном коде)
     isModalOpen: false,
+    currentImage: null,
+    tags: '',
   };
 
   // Когда компонент монтируется, вызывается этот метод
@@ -53,10 +54,6 @@ export class App extends Component {
       });
 
       if (page === 1) {
-        // Если это первая страница, загружаем все изображения без использования запроса
-        // const { hits } = await fetchImages({
-        //   per_page: total_hits, // Указываем total_hits для загрузки всех доступных изображений
-        // });
         this.setState({
           hits: hits,
           total: total,
@@ -91,13 +88,16 @@ export class App extends Component {
     this.setState({ query: query, hits: [], page: 1 }); // Обновляем состояние с новым запросом и сбрасываем текущую страницу на 1
   };
 
-  toogleModal = () => {
-    this.setState(prevState => ({ isModalOpen: !prevState.isModalOpen }));
+  toggleModal = (imageURL, alt) => {
+    this.setState(prevState => ({
+      isModalOpen: !prevState.isModalOpen,
+      currentImage: imageURL,
+      tags: alt,
+    }));
   };
 
-  // Функция для рендеринга компонента
   render() {
-    const { hits, loading, total, buttonIsGone, isModalOpen, children } =
+    const { hits, loading, isModalOpen, children, currentImage, tags } =
       this.state;
 
     return (
@@ -110,7 +110,10 @@ export class App extends Component {
                 {loading && !hits.length ? (
                   <Loader />
                 ) : (
-                  <ImageGalleryItem images={hits} />
+                  <ImageGalleryItem
+                    images={hits}
+                    toggleModal={this.toggleModal}
+                  />
                 )}
               </ImageGallery>
               <Button disabled={loading} onClick={this.handleLoadMore}>
@@ -118,7 +121,15 @@ export class App extends Component {
               </Button>
             </StyledContainer>
           </StyledSection>
-          {isModalOpen && <Modal onClose={this.toogleModal}>{children}</Modal>}
+          {isModalOpen && (
+            <Modal
+              currentImage={currentImage}
+              tags={tags}
+              onCloseModal={this.toggleModal}
+            >
+              {children}
+            </Modal>
+          )}
         </StyledMain>
       </>
     );
