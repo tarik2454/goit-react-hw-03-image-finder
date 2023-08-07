@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   ButtonLabel,
   SearchForm,
@@ -35,4 +36,8 @@ export const Searchbar = ({ setQuery }) => {
       </SearchForm>
     </StyledSearchbar>
   );
+};
+
+Searchbar.propTypes = {
+  setQuery: PropTypes.func.isRequired,
 };

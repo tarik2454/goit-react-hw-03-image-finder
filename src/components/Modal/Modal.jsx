@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StyledOverlay, StyledModalWindow } from './Modal.styled';
 
 export class Modal extends Component {
@@ -43,3 +44,10 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  tags: PropTypes.string.isRequired,
+  currentImage: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+};
