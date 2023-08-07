@@ -6,6 +6,7 @@ import {
   SearchFormInput,
   StyledSearchbar,
 } from './Searchbar.styled';
+import { ReactComponent as Icon } from '../../images/search.svg';
 
 export const Searchbar = ({ setQuery }) => {
   const onSubmit = event => {
@@ -19,7 +20,9 @@ export const Searchbar = ({ setQuery }) => {
     <StyledSearchbar>
       <SearchForm onSubmit={onSubmit}>
         <SearchFormButton type="submit">
-          +<ButtonLabel>Search</ButtonLabel>
+          <ButtonLabel>
+            <Icon />
+          </ButtonLabel>
         </SearchFormButton>
 
         <SearchFormInput

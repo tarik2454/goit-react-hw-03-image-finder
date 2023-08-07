@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { StyledOverlay, StyledModalWindow } from './Modal.styled';
 
-// const modalRoot = document.querySelector('#modal-root');
-
 export class Modal extends Component {
   state = {
     currentImage: this.props.largeImageURL,
@@ -18,13 +16,13 @@ export class Modal extends Component {
 
   onBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      this.props.onCloseModal();
+      this.props.toggleModal();
     }
   };
 
   handleKeyDown = event => {
     if (event.key === 'Escape') {
-      this.props.onCloseModal();
+      this.props.toggleModal();
     }
   };
 

@@ -33,11 +33,11 @@ export const SearchFormButton = styled.button`
   display: inline-block;
   width: 48px;
   height: 48px;
-  border: 0;
+  /* border: 0;
   background-image: url('../images/search-svgrepo-com.svg');
   background-size: 40%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -49,7 +49,7 @@ export const SearchFormButton = styled.button`
 `;
 
 export const ButtonLabel = styled.span`
-  position: absolute;
+  /* position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
@@ -57,7 +57,7 @@ export const ButtonLabel = styled.span`
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   clip-path: inset(50%);
-  border: 0;
+  border: 0; */
 `;
 
 export const SearchFormInput = styled.input`

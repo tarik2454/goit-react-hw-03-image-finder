@@ -21,4 +21,9 @@ export const StyledModalWindow = styled.div`
   @media screen and (min-width: 768px) {
     max-width: calc(100vw - 248px);
   }
+
+  @media screen and (min-width: 1200px) {
+    max-width: calc(100vw - 548px);
+    max-height: calc(100vh - 124px);
+  }
 `;

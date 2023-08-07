@@ -21,7 +21,10 @@ export const Loader = () => {
 };
 
 const StyledWatchWrapper = styled.div`
-  display: grid;
-  place-items: center;
-  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 70vh;
 `;
