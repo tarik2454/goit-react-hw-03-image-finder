@@ -54,6 +54,10 @@ export class App extends Component {
         hits: [...prevState.hits, ...hits],
         totalHits,
       }));
+
+      // if (hits.length < totalHits) {
+      //   toast.info(`End ${totalHits}!`);
+      // }
     } catch (error) {
       console.warn(error.message);
     } finally {
@@ -63,6 +67,11 @@ export class App extends Component {
 
   handleLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
+
+    const { per_page, page, totalHits, hits } = this.state;
+    if (totalHits - page * hits.length < per_page) {
+      toast.info(`End ${totalHits}!`);
+    }
   };
 
   handleChangeQuery = query => {
@@ -98,7 +107,7 @@ export class App extends Component {
           <Searchbar setQuery={this.handleChangeQuery} />
           <StyledSection>
             <StyledContainer>
-              <ImageGallery load={loading}>
+              <ImageGallery>
                 {loading && !hits.length ? (
                   <Loader />
                 ) : (
